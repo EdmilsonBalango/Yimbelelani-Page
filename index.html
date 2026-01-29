@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0A5A63" />
+  <meta name="description" content="Xitswa Hymnal — Christian hymns in Xitswa (Southern Mozambique), including translations of well-known hymns from Portuguese." />
+  <title>Xitswa Hymnal</title>
+
+  <style>
+    :root {
+      --teal-900: #06363B;
+      --teal-800: #0A4B52;
+      --teal-700: #0A5A63;
+      --teal-600: #0E6F7A;
+      --teal-200: #CFE7E7;
+      --gold-500: #F4A72E;
+      --bg: #F7FBFB;
+      --text: #0F1F22;
+      --muted: rgba(15,31,34,.72);
+      --card: #FFFFFF;
+      --border: rgba(6,54,59,.14);
+      --shadow: 0 12px 40px rgba(6,54,59,.10);
+      --radius: 18px;
+      --max: 1100px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", Segoe UI, Roboto, Helvetica, Arial, sans-serif; color: var(--text); background: var(--bg); }
+    a { color: var(--teal-700); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .topbar {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(247,251,251,.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+    .topbar-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 180px;
+    }
+    .brand img {
+      width: 34px; height: 34px; border-radius: 10px;
+      box-shadow: 0 6px 18px rgba(6,54,59,.12);
+    }
+    .brand .name {
+      font-weight: 800;
+      letter-spacing: .2px;
+      line-height: 1.05;
+    }
+    .brand .tag {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .nav a {
+      font-size: 14px;
+      color: rgba(15,31,34,.85);
+      padding: 8px 10px;
+      border-radius: 10px;
+    }
+    .nav a:hover {
+      background: rgba(10,90,99,.08);
+      text-decoration: none;
+    }
+    .pill {
+      border: 1px solid rgba(244,167,46,.45);
+      background: rgba(244,167,46,.12);
+      color: var(--teal-900) !important;
+      font-weight: 700;
+    }
+
+    .hero {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 54px 18px 22px;
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 28px;
+      align-items: center;
+    }
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(34px, 4vw, 54px);
+      line-height: 1.06;
+      letter-spacing: -.6px;
+    }
+    .hero h1 .accent {
+      color: var(--teal-700);
+    }
+    .hero p {
+      margin: 16px 0 0;
+      font-size: 18px;
+      line-height: 1.55;
+      color: var(--muted);
+      max-width: 60ch;
+      
+    }
+    .hero-badges {
+      display: flex; gap: 10px; flex-wrap: wrap;
+      margin-top: 20px;
+      color: var(--muted);
+    }
+    
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.8);
+      box-shadow: 0 10px 24px rgba(6,54,59,.06);
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--gold-500);
+      box-shadow: 0 0 0 4px rgba(244,167,46,.18);
+    }
+
+    .phone-card {
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: linear-gradient(145deg, rgba(10,90,99,.12), rgba(244,167,46,.08));
+      box-shadow: var(--shadow);
+      padding: 16px;
+      overflow: hidden;
+    }
+    .phone-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 14px;
+      display: block;
+    }
+
+    .section {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 34px 18px;
+    }
+    .section-title {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .section-title h2 {
+      margin: 0;
+      font-size: 26px;
+      letter-spacing: -.3px;
+    }
+    .section-title p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+    }
+    .card {
+      grid-column: span 4;
+      border: 1px solid var(--border);
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 16px 16px 14px;
+      box-shadow: 0 12px 28px rgba(6,54,59,.06);
+    }
+    .card h3 {
+      margin: 0 0 6px;
+      font-size: 16px;
+      letter-spacing: -.2px;
+    }
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.5;
+      font-size: 14px;
+    }
+
+    .screens {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+    }
+    .shot {
+      grid-column: span 4;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: #fff;
+      box-shadow: 0 14px 32px rgba(6,54,59,.08);
+    }
+    .shot img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .policy {
+      border: 1px solid var(--border);
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: 0 12px 28px rgba(6,54,59,.06);
+    }
+    .policy h3 { margin: 0 0 10px; }
+    .policy p, .policy li {
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .policy ul { margin: 8px 0 0 18px; }
+    .muted { color: var(--muted); }
+
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 20px 18px 28px;
+      margin-top: 20px;
+      background: var(--bg);
+    }
+    .footer-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .footer img { height: 26px; width: auto; }
+
+    @media (max-width: 920px) {
+      .hero { grid-template-columns: 1fr; }
+      .card { grid-column: span 6; }
+      .shot { grid-column: span 6; }
+    }
+    @media (max-width: 560px) {
+      .nav { gap: 6px; }
+      .card, .shot { grid-column: span 12; }
+      .hero p { font-size: 16px; }
+    }
+
+    /* Dark mode (for the page itself) */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #061A1C;
+        --text: #EAF6F6;
+        --muted: rgba(234,246,246,.72);
+        --card: rgba(10,25,27,.65);
+        --border: rgba(207,231,231,.14);
+        --shadow: 0 18px 60px rgba(0,0,0,.35);
+      }
+      .topbar { background: rgba(6,26,28,.72); }
+      .nav a { color: rgba(234,246,246,.86); }
+      .badge { background: rgba(10,25,27,.55); }
+      .shot { background: rgba(10,25,27,.45); }
+      .policy { background: rgba(10,25,27,.55); }
+      a { color: #7FE4E4; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <img src="logo.png" alt="Xitswa Hymnal logo" />
+        <div>
+          <div class="name">Yimbelelani</div>
+          <div class="tag">Hymns in Xitswa</div>
+        </div>
+      </div>
+      <nav class="nav" aria-label="Primary">
+        <a href="#features">Features</a>
+        <a href="#screenshots">Screenshots</a>
+        <a href="#privacy">Privacy Policy</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="top">
+      <div>
+        <h1>
+          Worship in <span class="accent">Xitswa</span>.<br />
+          Read and sing hymns anywhere.
+        </h1>
+        <p>
+          <strong>Yimbelelani</strong> is a digital hymnal designed to preserve and promote Christian hymns in
+          <strong>Xitswa</strong>, a local language of Southern Mozambique.
+          It includes translations of well-known hymns from <strong>Portuguese</strong>, presented in a clean and readable format.
+        </p>
+
+        <div class="hero-badges" role="list">
+          <div class="badge" role="listitem"><span class="dot"></span> Fast search</div>
+          <div class="badge" role="listitem"><span class="dot"></span> Adjustable text size</div>
+          <div class="badge" role="listitem"><span class="dot"></span> Light & Dark mode</div>
+          <div class="badge" role="listitem"><span class="dot"></span> Simple, distraction-free reading</div>
+        </div>
+      </div>
+
+      <div class="phone-card" aria-label="App preview">
+        <img src="2.png" alt="Xitswa Hymnal preview" />
+      </div>
+    </section>
+
+    <section class="section" id="features">
+      <div class="section-title">
+        <h2>What you can do</h2>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3>Hymns in Xitswa</h3>
+          <p>Access hymns written in Xitswa, supporting local worship and language preservation.</p>
+        </div>
+        <div class="card">
+          <h3>Portuguese translations</h3>
+          <p>Includes Xitswa translations of well-known hymns originally in Portuguese.</p>
+        </div>
+        <div class="card">
+          <h3>Quick search</h3>
+          <p>Find hymns by title or number using an intuitive search experience.</p>
+        </div>
+
+        <div class="card">
+          <h3>Readable typography</h3>
+          <p>Adjust text size for comfortable reading during services or personal devotion.</p>
+        </div>
+        <div class="card">
+          <h3>Light & Dark mode</h3>
+          <p>Use a theme that fits your environment—bright daylight or low-light settings.</p>
+        </div>
+        <div class="card">
+          <h3>Simple navigation</h3>
+          <p>Move through hymns easily with a clean, focused layout.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="screenshots">
+      <div class="section-title">
+        <h2>Screenshots</h2>
+      </div>
+
+      <div class="screens">
+        <figure class="shot">
+          <img src="1.png" alt="Search and hymn list" />
+        </figure>
+        <figure class="shot">
+          <img src="2.png" alt="Hymn list screen" />
+        </figure>
+        <figure class="shot">
+          <img src="3.png" alt="Read hymn in portrait mode" />
+        </figure>
+        <figure class="shot">
+          <img src="4.png" alt="Dark mode preview" />
+        </figure>
+        <figure class="shot">
+          <img src="5.png" alt="Adjust text size preview" />
+        </figure>
+        <figure class="shot">
+          <img src="6.png" alt="Navigation preview" />
+        </figure>
+      </div>
+    </section>
+
+    <section class="section" id="privacy">
+      <div class="section-title">
+        <h2>Privacy Policy</h2>
+      </div>
+
+      <div class="policy" role="region" aria-label="Privacy Policy">
+        <h3>Xitswa Hymnal Privacy Policy</h3>
+        <p><strong>Effective date:</strong> 2026-01-29</p>
+
+        <p>
+          Xitswa Hymnal is a hymnal app focused on providing Christian hymns in Xitswa and translations of well-known Portuguese hymns.
+          We value your privacy and designed the app to minimize data collection.
+        </p>
+
+        <h4>Data we collect</h4>
+        <ul>
+          <li><strong>No personal data is collected</strong>, stored, or shared by this app.</li>
+          <li>The app does not require account registration or login.</li>
+          <li>The app does not use third-party analytics or advertising SDKs.</li>
+          <li>The app does not track users across apps or websites.</li>
+        </ul>
+
+        <h4>Internet access</h4>
+        <p>
+          The app is intended to work without requiring internet access for core usage.
+          If future versions introduce optional online features, this policy will be updated accordingly.
+        </p>
+
+        <h4>Children’s privacy</h4>
+        <p>
+          The app does not knowingly collect personal information from children or any users.
+        </p>
+
+        <h4>Changes to this policy</h4>
+        <p>
+          We may update this Privacy Policy if the app’s functionality changes. Any updates will be published on this page with a new effective date.
+        </p>
+
+        <h4>Contact</h4>
+        <p>
+          If you have questions about this Privacy Policy, contact us at:
+          <br />
+          <strong>Email:</strong> <a href="mailto:edmilsonbalango34@gmail.com">edmilsonbalango34@gmail.com</a>
+        </p>
+
+        <p class="muted" style="margin-top:14px;">
+          Note: Replace the email above with your real support email before publishing.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <img src="logo_dark.png" alt="Xitswa Hymnal mark" />
+        <span>© 2026 Xitswa Hymnal</span>
+      </div>
+      <div>
+        <a href="#top">Back to top</a>
+        &nbsp;•&nbsp;
+        <a href="#privacy">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
