@@ -1,0 +1,6 @@
+{
+  "/.well-known/apple-app-site-association/route": "app/.well-known/apple-app-site-association/route.js",
+  "/.well-known/assetlinks.json/route": "app/.well-known/assetlinks.json/route.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/page": "app/page.js"
+}
