@@ -40,8 +40,8 @@ export default function Home() {
       <header className="sticky top-0 z-50 border-b border-[var(--line)] bg-[#f7fbfb]/85 backdrop-blur-xl">
         <div className="mx-auto flex max-w-[1100px] items-center justify-between gap-4 px-[18px] py-3">
           <a href="#top" className="flex min-w-[180px] items-center gap-2.5 no-underline">
-            <Image src="/logo.png" alt="Yitswa Hymnal logo" width={34} height={34} className="rounded-[10px] shadow-lg" />
-            <span><strong className="block font-bold leading-none">Yimbelelani</strong><small className="mt-0.5 block text-xs text-[var(--muted)]">{t.tag}</small></span>
+            <Image src="/logo_dark.png" alt="Yitswa Hymnal logo" width={34} height={34} className=" " />
+            <span><strong className="block font-bold leading-none text-[#0e6f7a]">Yimbelelani</strong><small className="mt-0.5 block text-xs text-[var(--muted)]">{t.tag}</small></span>
           </a>
           <nav aria-label="Primary" className="flex flex-wrap items-center justify-end gap-1 sm:gap-2">
             {t.nav.map((label, index) => <a key={label} href={["#features", "#screenshots", "#privacy"][index]} className="rounded-lg px-2.5 py-2 text-sm text-[var(--ink)]/80 hover:bg-[#0a5a63]/10">{label}</a>)}
