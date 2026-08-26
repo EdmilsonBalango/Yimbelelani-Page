@@ -6,8 +6,12 @@ export function GET() {
       apps: [],
       details: [
         {
-          appID: process.env.APPLE_APP_ID ?? "TEAM_ID.com.yimbelelani.app",
-          paths: ["*"]
+          appID: process.env.APPLE_APP_ID, 
+          components: [
+            {
+              "/": "/download*",
+            },
+          ],
         }
       ]
     }
