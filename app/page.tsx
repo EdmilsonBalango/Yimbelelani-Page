@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import { ArrowUpRight, BookOpen, Search, SlidersHorizontal, SunMoon, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -9,7 +10,7 @@ type Locale = "en" | "pt";
 
 const translations = {
   en: {
-    nav: ["Features", "Screenshots", "Privacy"],
+    nav: ["Features", "Screenshots", "Privacy"], download: "Download",
     tag: "Hymns in Xitswa", intro: "A hymnal for home and church", hero: <>Worship in <span className="text-[#0a5a63]">Xitswa</span>.<br />Read and sing <em className="text-[#f4a72e] not-italic">anywhere.</em></>,
     description: <> <strong>Yimbelelani</strong> is a digital hymnal designed to preserve and promote Christian hymns in <strong>Xitswa</strong>, a local language of Southern Mozambique. It includes translations of well-known hymns from <strong>Portuguese</strong>, presented in a clean and readable format.</>,
     badges: ["Fast search", "Adjustable text size", "Light & dark mode", "Distraction-free reading"], cta: "Explore the app",
@@ -18,7 +19,7 @@ const translations = {
     privacyHeading: "Xitswa Hymnal Privacy Policy", effective: "Effective date:", privacyIntro: "Xitswa Hymnal is a hymnal app focused on providing Christian hymns in Xitswa and translations of well-known Portuguese hymns. We value your privacy and designed the app to minimize data collection.", data: "Data we collect", noData: "No personal data is collected, stored, or shared by this app.", noAccount: "The app does not require account registration or login.", noAds: "The app does not use third-party analytics or advertising SDKs.", noTracking: "The app does not track users across apps or websites.", internet: "Internet access", internetText: "The app is intended to work without requiring internet access for core usage. If future versions introduce optional online features, this policy will be updated accordingly.", children: "Children's privacy", childrenText: "The app does not knowingly collect personal information from children or any users.", contact: "Contact", questions: "Questions? Contact", back: "Back to top", footerPrivacy: "Privacy Policy",
   },
   pt: {
-    nav: ["Recursos", "Imagens", "Privacidade"],
+    nav: ["Recursos", "Imagens", "Privacidade"], download: "Download",
     tag: "Hinos em Xitswa", intro: "Um hinário para casa e igreja", hero: <>Adore em <span className="text-[#0a5a63]">Xitswa</span>.<br />Leia e cante <em className="text-[#f4a72e] not-italic">em qualquer lugar.</em></>,
     description: <> <strong>Yimbelelani</strong> é um hinário digital criado para preservar e promover hinos cristãos em <strong>Xitswa</strong>, uma língua local do sul de Moçambique. Inclui traduções de hinos conhecidos do <strong>Português</strong>, apresentados num formato simples e legível.</>,
     badges: ["Pesquisa rápida", "Tamanho de texto ajustável", "Modo claro e escuro", "Leitura sem distrações"], cta: "Explorar a aplicação",
@@ -45,6 +46,7 @@ export default function Home() {
           </a>
           <nav aria-label="Primary" className="flex flex-wrap items-center justify-end gap-1 sm:gap-2">
             {t.nav.map((label, index) => <a key={label} href={["#features", "#screenshots", "#privacy"][index]} className="rounded-lg px-2.5 py-2 text-sm text-[var(--ink)]/80 hover:bg-[#0a5a63]/10">{label}</a>)}
+            <Link href="/download" className="rounded-full bg-[#0e6f7a] px-3.5 py-2 text-sm font-bold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-[#ffb63f]">{t.download}</Link>
             <div className="ml-1 flex items-center rounded-full border border-[var(--line)] bg-white/80 p-1 text-xs font-bold shadow-sm" aria-label="Language selector">
               {(["en", "pt"] as const).map((language) => <button key={language} type="button" aria-pressed={locale === language} onClick={() => setLocale(language)} className={`rounded-full px-2.5 py-1.5 transition ${locale === language ? "bg-[#0a5a63] text-white" : "text-[var(--muted)] hover:text-[#0a5a63]"}`}>{language.toUpperCase()}</button>)}
             </div>
