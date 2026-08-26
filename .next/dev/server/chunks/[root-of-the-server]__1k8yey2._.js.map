@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 64, "column": 0}, "map": {"version":3,"sources":["file:///Users/edmilsonbalango/Yimbelelani-Page/app/.well-known/apple-app-site-association/route.ts"],"sourcesContent":["import { NextResponse } from \"next/server\";\n\nexport function GET() {\n  return NextResponse.json({\n    applinks: {\n      apps: [],\n      details: [\n        {\n          appID: process.env.APPLE_APP_ID ?? \"TEAM_ID.com.yimbelelani.app\",\n          paths: [\"*\"]\n        }\n      ]\n    }\n  }, { headers: { \"Cache-Control\": \"public, max-age=3600\" } });\n}\n"],"names":["GET","json","applinks","apps","details","appID","process","env","APPLE_APP_ID","paths","headers"],"mappings":";;;;AAAA;;AAEO,SAASA;IACd,OAAO,gJAAY,CAACC,IAAI,CAAC;QACvBC,UAAU;YACRC,MAAM,EAAE;YACRC,SAAS;gBACP;oBACEC,OAAOC,QAAQC,GAAG,CAACC,YAAY,IAAI;oBACnCC,OAAO;wBAAC;qBAAI;gBACd;aACD;QACH;IACF,GAAG;QAAEC,SAAS;YAAE,iBAAiB;QAAuB;IAAE;AAC5D"}}]
-}

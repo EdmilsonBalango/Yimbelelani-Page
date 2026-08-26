@@ -1,7 +1,0 @@
-{
-  "/.well-known/apple-app-site-association/route": "/.well-known/apple-app-site-association",
-  "/.well-known/assetlinks.json/route": "/.well-known/assetlinks.json",
-  "/_global-error/page": "/_global-error",
-  "/_not-found/page": "/_not-found",
-  "/page": "/"
-}
