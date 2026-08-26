@@ -32,7 +32,7 @@ const featureIcons = [BookOpen, BookOpen, Search, SlidersHorizontal, SunMoon, Za
 const screenshots = ["1.png", "2.png", "3.png", "4.png", "5.png", "6.png"];
 
 export default function Home() {
-  const [locale, setLocale] = useState<Locale>("en");
+  const [locale, setLocale] = useState<Locale>("pt");
   const t = translations[locale];
 
   return (
