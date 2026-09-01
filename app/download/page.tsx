@@ -3,30 +3,17 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, Download } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 const appStore = process.env.NEXT_PUBLIC_APP_STORE_URL ?? "https://apps.apple.com/app/idYOUR_APP_ID";
 const playStore = process.env.NEXT_PUBLIC_PLAY_STORE_URL ?? `https://play.google.com/store/apps/details?id=com.yourcompany.yourapp`;
 
-const downloadAPK = () => {
-  const link = document.createElement("a");
-  link.href = "/Download/yimbelelani.apk";
-  link.download = "yimbelelani.apk";
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-};
-
 export default function DownloadPage() {
-  const [isAndroid, setIsAndroid] = useState(false);
-
   useEffect(() => {
     const userAgent = navigator.userAgent || navigator.vendor;
 
     if (/android/i.test(userAgent)) {
-      setIsAndroid(true);
-      // Automatically download APK for Android devices
-      downloadAPK();
+      window.location.href = playStore;
       return;
     }
 
@@ -55,12 +42,9 @@ export default function DownloadPage() {
           <a href={appStore} className="group flex items-center justify-center gap-3 rounded-[14px] bg-[#0a5a63] px-5 py-4 text-left text-white shadow-[0_12px_26px_rgba(6,54,59,.18)] transition hover:-translate-y-1 hover:bg-[#06363b]">
             <Image src="/apple.svg" alt="" width={28} height={28} className="h-7 w-7 shrink-0" /><span><small className="block text-xs text-white/75">Download on the</small><strong className="block text-base">App Store</strong></span>
           </a>
-          <button
-            onClick={() => isAndroid ? downloadAPK() : window.location.href = playStore}
-            className="group flex items-center justify-center gap-3 rounded-[14px] border border-[var(--line)] bg-white px-5 py-4 text-left text-[#0f1f22] shadow-[0_12px_26px_rgba(6,54,59,.08)] transition hover:-translate-y-1 hover:border-[#0a5a63]/40 cursor-pointer"
-          >
+          <a href={playStore} className="group flex items-center justify-center gap-3 rounded-[14px] border border-[var(--line)] bg-white px-5 py-4 text-left text-[#0f1f22] shadow-[0_12px_26px_rgba(6,54,59,.08)] transition hover:-translate-y-1 hover:border-[#0a5a63]/40">
             <Image src="/playstore.svg" alt="" width={28} height={28} className="h-7 w-7 shrink-0" /><span><small className="block text-xs text-[var(--muted)]">Get it on</small><strong className="block text-base">Google Play</strong></span>
-          </button>
+          </a>
         </div>
 
         <p className="mt-8 inline-flex items-center gap-2 text-sm text-[var(--muted)]"><Download className="h-4 w-4 text-[#0e6f7a]" /> Your download should begin automatically on mobile.</p>
