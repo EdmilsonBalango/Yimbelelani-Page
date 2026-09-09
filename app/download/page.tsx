@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, Download, Monitor, Apple } from "lucide-react";
+import { ArrowLeft, Download } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const playStore = process.env.NEXT_PUBLIC_PLAY_STORE_URL ?? "https://play.google.com/store/apps/details?id=com.yimbelelani";
@@ -72,18 +72,18 @@ export default function DownloadPage() {
           <a
             href="/Download/Yimbelelani_0.1.0_x64_en-US.msi"
             download
-            className={`group flex items-center justify-center gap-3 rounded-[14px] px-5 py-4 text-left shadow-[0_12px_26px_rgba(6,54,59,.18)] transition hover:-translate-y-1 ${
+            className={`group flex items-center justify-center gap-3 rounded-[14px] px-5 py-4 text-left shadow-[0_5px_16px_rgba(6,54,59,.18)] transition hover:-translate-y-1 ${
               detectedPlatform === "windows"
                 ? "bg-[#0a5a63] text-white hover:bg-[#06363b]"
                 : "border border-[var(--line)] bg-white text-[#0f1f22] hover:border-[#0a5a63]/40"
             }`}
           >
-            <Monitor className="h-7 w-7 shrink-0" />
-            <span className="flex-1">
+            <Image src="/windows.png" alt="Windows" width={28} height={28} className="h-7 w-7 shrink-0" />
+            <span className="flex-1 ml-3">
               <small className={`block text-xs ${detectedPlatform === "windows" ? "text-white/75" : "text-[var(--muted)]"}`}>
                 {detectedPlatform === "windows" ? "Recommended for" : "Download for"}
               </small>
-              <strong className="block text-base">Windows (MSI)</strong>
+              <strong className="block text-base">Windows</strong>
             </span>
           </a>
 
@@ -96,12 +96,12 @@ export default function DownloadPage() {
                 : "border border-[var(--line)] bg-white text-[#0f1f22] hover:border-[#0a5a63]/40"
             }`}
           >
-            <Apple className="h-7 w-7 shrink-0" />
-            <span className="flex-1">
+            <Image src="/apple.png" alt="macOS" width={28} height={28} className="h-7 w-7 shrink-0" />
+            <span className="flex-1 ml-3">
               <small className={`block text-xs ${detectedPlatform === "macos" ? "text-white/75" : "text-[var(--muted)]"}`}>
                 {detectedPlatform === "macos" ? "Recommended for" : "Download for"}
               </small>
-              <strong className="block text-base">macOS (DMG)</strong>
+              <strong className="block text-base">macOS</strong>
             </span>
           </a>
         </div>

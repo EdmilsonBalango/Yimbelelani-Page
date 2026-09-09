@@ -11,6 +11,9 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Yimbelelani | Hymns in Xitswa",
   description: "A digital hymnal preserving Christian hymns in Xitswa.",
+  icons: {
+    icon: "/logo_dark.png",
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
