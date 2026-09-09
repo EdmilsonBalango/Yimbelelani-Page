@@ -78,10 +78,10 @@ export default function DownloadPage() {
                 : "border border-[var(--line)] bg-white text-[#0f1f22] hover:border-[#0a5a63]/40"
             }`}
           >
-            <Image src="/windows.png" alt="Windows" width={28} height={28} className="h-7 w-7 shrink-0" />
+            <Image src={detectedPlatform === "windows" ? "/windows.png" : "/windows-bk.png"} alt="Windows" width={28} height={28} className="h-7 w-7 shrink-0" />
             <span className="flex-1 ml-3">
               <small className={`block text-xs ${detectedPlatform === "windows" ? "text-white/75" : "text-[var(--muted)]"}`}>
-                {detectedPlatform === "windows" ? "Recommended for" : "Download for"}
+                {detectedPlatform === "windows" ? "Recommended for" : "Download also for"}
               </small>
               <strong className="block text-base">Windows</strong>
             </span>
@@ -96,10 +96,10 @@ export default function DownloadPage() {
                 : "border border-[var(--line)] bg-white text-[#0f1f22] hover:border-[#0a5a63]/40"
             }`}
           >
-            <Image src="/apple.png" alt="macOS" width={28} height={28} className="h-7 w-7 shrink-0" />
+            <Image src={detectedPlatform === "macos" ? "/apple.png" : "/apple-bk.png"} alt="macOS" width={28} height={28} className="h-7 w-7 shrink-0" />
             <span className="flex-1 ml-3">
               <small className={`block text-xs ${detectedPlatform === "macos" ? "text-white/75" : "text-[var(--muted)]"}`}>
-                {detectedPlatform === "macos" ? "Recommended for" : "Download for"}
+                {detectedPlatform === "macos" ? "Recommended for" : "Download also for"}
               </small>
               <strong className="block text-base">macOS</strong>
             </span>
